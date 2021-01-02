@@ -88,15 +88,7 @@ async function monitorPrice() {
       outputTokenAddress: '0xdd974d5c2e2928dea5f71b9825b8b646686bd200',
       inputAmount: web3.utils.toWei('1', 'ETHER')
     })
-
-    await checkPair({
-      inputTokenSymbol: 'ETH',
-      inputTokenAddress: '0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
-      outputTokenSymbol: 'TRB',
-      outputTokenAddress: '0x514910771af9ca656af840dff83e8264ecf986ca',
-      inputAmount: web3.utils.toWei('1', 'ETHER')
-    })
-
+  
   } catch (error) {
     console.error(error)
     monitoringPrice = false
