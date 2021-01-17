@@ -2,7 +2,6 @@ require("dotenv").config();
 const express = require("express");
 const http = require("http");
 const Web3 = require("web3");
-const moment = require("moment-timezone");
 const { checkPair } = require("./helpers/helpers");
 
 // SERVER CONFIG
