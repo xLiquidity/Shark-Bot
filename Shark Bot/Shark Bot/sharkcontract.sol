@@ -25,4 +25,8 @@ contract PriceData {
 
     }
 }
-   
+ 
+// import trading bot
+// add token addresses in function
+// add DEX addresses in function
+// contract only tells you if data says to trade
