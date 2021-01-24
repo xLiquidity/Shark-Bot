@@ -59,7 +59,7 @@ pragma solidity >=0.5.0;
             returns(uint256 returnAmount);
     }
     
-        
+        // withdraw tokens from Exchange
          function withdraw() public {
              require(tokens[_token][msg.sender] >= _amount);
              tokens[_token][msg.sender] = tokens[_token][msg.sender].sub(_amount);
