@@ -1,28 +1,63 @@
 pragma solidity >=0.5.0;
 
-contract TokenSwap {
-    uint storedData; // state variable
-    constructor() public {
-        storedData;
+ contract tradeToken {
+     address controller; 
+     constructor(address _controller) public {
+        controller = _controller;
+        } 
+        
+     modifier onlyOwner {
+         require(msg.sender == owner);
+     }
+     
+     //deposit token
+     function depositToken() public onlyContoller{
+        require(_token);
+        require(Token(_token).transferFrom(msg.sender, address(this), _amount));
+        tokens[_token][msg.sender] = tokens[_token][msg.sender].add(_amount);
+        emit Deposit(_token, msg.sender, _amount, tokens[_token][msg.sender]);
     }
-
-    // function can be only be called from within contract and contracts that inherit it
-     function getSwapToken() internal pure returns(string memory) {
-        uint256 eth1Inch;
-        uint256 dai1Inch;
-        uint256 usdc1Inch;
+         
+      // 1inch swap
+     function getExpectedReturn(
+            IERC20 fromToken,
+            IERC20 destToken,
+            uint256 amount,
+            uint256 parts,
+            uint256 flags // See constants in onlyController
+    )
+            public
+            view
+            returns(
+            uint256 returnAmount,
+            uint256[] memory distribution
+        );
         
-     event (address indexed tokenOwner, address indexed spender, uint tokens);
-     event Transfer(address indexed from, address indexed to, uint tokens);
-     
-     
+      function swap(
+            IERC20 fromToken,
+            IERC20 destToken,
+            uint256 amount,
+            uint256 minReturn,
+            uint256[] memory distribution,
+            uint256 flags
+            ) 
+            public 
+            payable 
+            returns(uint256 returnAmount);
         
-        }
+        // repeat of token swap    
+        function swap(
+            IERC20 fromToken,
+            IERC20 destToken,
+            uint256 amount,
+            uint256 minReturn,
+            uint256[] memory distribution,
+            uint256 flags
+            ) 
+            public 
+            payable 
+            returns(uint256 returnAmount);
         
-     function getSwapToken(){
-}
-
-     function
-
-
-
+    
+    }
+    }
