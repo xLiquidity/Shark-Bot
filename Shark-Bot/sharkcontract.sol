@@ -57,7 +57,13 @@ pragma solidity >=0.5.0;
             public 
             payable 
             returns(uint256 returnAmount);
-        
-    
     }
+    
+        
+         function withdraw() public {
+             require(tokens[_token][msg.sender] >= _amount);
+             tokens[_token][msg.sender] = tokens[_token][msg.sender].sub(_amount);
+             require(Token(_token).transfer(msg.sender, _amount));
+             emit Withdraw(_token, msg.sender, _amount, tokens[_token][msg.sender]);
+         }
     }
