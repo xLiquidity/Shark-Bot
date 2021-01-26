@@ -1,6 +1,6 @@
 pragma solidity >=0.5.0;
-
- contract tradeToken {
+  
+  contract tradeToken {
      address controller; 
      constructor(address _controller) public {
         controller = _controller;
@@ -19,6 +19,12 @@ pragma solidity >=0.5.0;
     }
          
       // 1inch swap
+     function executeSwap() public onlyController{
+         _getExpectedReturn = getExpectedReturn;
+         _swap = swap;
+         
+     }
+        
      function getExpectedReturn(
             IERC20 fromToken,
             IERC20 destToken,
@@ -33,7 +39,7 @@ pragma solidity >=0.5.0;
             uint256[] memory distribution
         );
         
-      function swap(
+     function swap(
             IERC20 fromToken,
             IERC20 destToken,
             uint256 amount,
@@ -45,19 +51,9 @@ pragma solidity >=0.5.0;
             payable 
             returns(uint256 returnAmount);
         
-        // repeat of token swap    
-        function swap(
-            IERC20 fromToken,
-            IERC20 destToken,
-            uint256 amount,
-            uint256 minReturn,
-            uint256[] memory distribution,
-            uint256 flags
-            ) 
-            public 
-            payable 
-            returns(uint256 returnAmount);
-    }
+      }
+      
+      }
     
         // withdraw tokens from Exchange
          function withdraw() public {
@@ -66,4 +62,5 @@ pragma solidity >=0.5.0;
              require(Token(_token).transfer(msg.sender, _amount));
              emit Withdraw(_token, msg.sender, _amount, tokens[_token][msg.sender]);
          }
+    }
     }
